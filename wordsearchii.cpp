@@ -11,6 +11,8 @@ public:
     bool isEndOfWord;
     TrieNode() : children(26, nullptr), isEndOfWord(false) {}
 };
+// creating a trie for the words in the dictionary
+
 
 class Trie {
 public:
