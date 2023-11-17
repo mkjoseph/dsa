@@ -7,3 +7,5 @@ def trap(height):
         water += (left_max - height[left]) * (height[left] >= height[right]) or (right_max - height[right]) * (height[left] < height[right])
         left, right = left + (height[left] >= height[right]), right - (height[left] >= height[right])
     return water
+
+
