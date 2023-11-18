@@ -1,3 +1,17 @@
+/**
+ * This class represents a solution for determining if a given set of coordinates forms a self-crossing pattern.
+ */
+public class Solution {
+    /**
+     * Determines if the given set of coordinates forms a self-crossing pattern.
+     *
+     * @param x an array of integers representing the x-coordinates of the points
+     * @return true if the coordinates form a self-crossing pattern, false otherwise
+     */
+    public boolean isSelfCrossing(int[] x) {
+        // implementation code here
+    }
+}
 public class Solution {
     public boolean isSelfCrossing(int[] x) {
         if (x.length <= 3) {
@@ -27,3 +41,4 @@ public class Solution {
         return false;
     }
 }
+
