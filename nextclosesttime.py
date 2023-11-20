@@ -1,12 +1,25 @@
-def next_closest_time(time):
-    """
-    Finds the next closest time given a time string in the format "HH:MM".
+class Solution(object):
+    def nextClosestTime(self, time):
+        """
+        :type time: str
+        :rtype: str
+        """
+        hour, minute = time.split(":")
+        
+        # Generate all possible 2 digit values
+        # There are at most 16 sorted values here
+        nums = sorted(set(hour + minute))
+        two_digit_values = [a+b for a in nums for b in nums]
 
-    Args:
-        time (str): The input time string in the format "HH:MM".
+        # Check if the next valid minute is within the hour
+        i = two_digit_values.index(minute)
+        if i + 1 < len(two_digit_values) and two_digit_values[i+1] < "60":
+            return hour + ":" + two_digit_values[i+1]
 
-    Returns:
-        str: The next closest time in the format "HH:MM".
-    """
-    # Rest of the code goes here
-    pass
+        # Check if the next valid hour is within the day
+        i = two_digit_values.index(hour)
+        if i + 1 < len(two_digit_values) and two_digit_values[i+1] < "24":
+            return two_digit_values[i+1] + ":" + two_digit_values[0]
+        
+        # Return the earliest time of the next day
+        return two_digit_values[0] + ":" + two_digit_values[0]
