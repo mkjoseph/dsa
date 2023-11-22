@@ -1,3 +1,14 @@
+# FILEPATH
+
+"""
+Description of the code or function.
+
+Author: [Author Name]
+Date: [Date]
+Version: [Version Number]
+"""
+
+# Your code goes here
 # Ice Cream Order App
 
 ## Overview
@@ -27,3 +38,4 @@ The project follows the standard MVC design pattern. Here's an overview of the m
 - `IceCream.swift`: Model class representing an ice cream order.
 - `IceCreamOrderManager.swift`: A singleton class responsible for managing the ice cream order process.
 - `PaymentManager.swift`:
+
