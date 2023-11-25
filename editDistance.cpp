@@ -15,7 +15,7 @@ public:
         // Implementation code here...
     }
 };
-class Solution {
+/* class Solution {
 public:
     int minDistance(string word1, string word2) {
         int m = word1.size(), n = word2.size(), pre;
@@ -38,4 +38,4 @@ public:
         }
         return cur[n];
     }
-};
+}; */
