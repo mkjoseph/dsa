@@ -1,5 +1,21 @@
  
 
+/**
+ * @class Solution
+ * @brief Class that calculates the minimum edit distance between two strings.
+ */
+class Solution {
+public:
+    /**
+     * @brief Calculates the minimum edit distance between two strings.
+     * @param word1 The first string.
+     * @param word2 The second string.
+     * @return The minimum edit distance between the two strings.
+     */
+    int minDistance(string word1, string word2) {
+        // Implementation code...
+    }
+};
 class Solution {
 public:
     int minDistance(string word1, string word2) {
