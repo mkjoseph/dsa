@@ -10,6 +10,7 @@ class Solution {
 public:
     // public member function that checks if a word exists in a given 2D board.
     bool exist(vector<vector<char>>& board, string word) {
+            // Dimensions of the board
         int m = board.size();
         int n = board[0].size();
         vector<vector<bool>> visited(m, vector<bool>(n, false));
