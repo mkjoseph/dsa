@@ -21,7 +21,7 @@ public:
         }
         return false;
     }
-    
+    // Class Definition: Solution
     bool search(vector<vector<char>>& board, vector<vector<bool>>& visited, int i, int j, int index, string& word) {
         if (index == word.length()) {
             return true;
