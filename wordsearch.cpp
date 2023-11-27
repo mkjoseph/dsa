@@ -8,6 +8,7 @@ using namespace std;
 
 class Solution {
 public:
+    // public member function that checks if a word exists in a given 2D board.
     bool exist(vector<vector<char>>& board, string word) {
         int m = board.size();
         int n = board[0].size();
