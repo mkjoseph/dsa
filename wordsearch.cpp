@@ -13,6 +13,7 @@ public:
             // Dimensions of the board
         int m = board.size();
         int n = board[0].size();
+        // visited = 2D vector to track visited positions on the board
         vector<vector<bool>> visited(m, vector<bool>(n, false));
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
