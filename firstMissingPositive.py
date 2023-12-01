@@ -63,3 +63,5 @@ print("The smallest missing positive integer is:", firstMissingPositive(nums))
         if nums[i]/n==0:
             return i
     return n
+
+
