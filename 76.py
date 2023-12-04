@@ -63,15 +63,15 @@ class Solution(object):
         end = 0
         min_window = ""
         target_len = len(target)        
-        
+
         for end in range(len(search_string)):
-			# If we see a target letter, decrease the total target letter count
-			if target_letter_counts[search_string[end]] > 0:
+            # If we see a target letter, decrease the total target letter count
+            if target_letter_counts[search_string[end]] > 0:
                 target_len -= 1
 
-            # Decrease the letter count for the current letter
-			# If the letter is not a target letter, the count just becomes -ve
-			target_letter_counts[search_string[end]] -= 1
+                    # Note the new minimum window
+            # If the letter is not a target letter, the count just becomes -ve
+            target_letter_counts[search_string[end]] -= 1
             
 			# If all letters in the target are found:
             while found_target(target_len):
