@@ -60,8 +60,16 @@ class Codec:
 # Alternative solution ------------------------------------------
 
 class Codec:
-
     def serialize(self, root):
+        """
+        Serialize a binary tree to a string.
+        
+        Args:
+            root (TreeNode): The root of the binary tree to be serialized.
+            
+        Returns:
+            str: The serialized string representation of the binary tree.
+        """
         def doit(node):
             if node:
                 vals.append(str(node.val))
@@ -74,6 +82,15 @@ class Codec:
         return ' '.join(vals)
 
     def deserialize(self, data):
+        """
+        Deserialize a string to a binary tree.
+        
+        Args:
+            data (str): The serialized string representation of a binary tree.
+            
+        Returns:
+            TreeNode: The root of the deserialized binary tree.
+        """
         def doit():
             val = next(vals)
             if val == '#':
@@ -84,3 +101,4 @@ class Codec:
             return node
         vals = iter(data.split())
         return doit()
+
