@@ -78,23 +78,55 @@ The use of dynamic programming makes it an efficient solution, particularly for 
 
 class Solution(object):
     def isMatch(self, text, pattern):
+        """
+        Determines if the given text matches the given pattern.
+        The pattern may include '.' which matches any single character,
+        and '*' which matches zero or more of the preceding element.
+
+        :param text: str - The text to be matched against the pattern.
+        :param pattern: str - The pattern to match, including special characters '.' and '*'.
+        :return: bool - True if the text matches the pattern, False otherwise.
+        """
+
+        # Dictionary to memoize results of subproblems
         memo = {}
 
         def dp(i, j):
+            """
+            A helper function using dynamic programming to determine if
+            the substring of text starting at index i matches the substring
+            of pattern starting at index j.
+
+            :param i: int - Starting index in the text.
+            :param j: int - Starting index in the pattern.
+            :return: bool - True if the substring of text matches the substring of pattern, False otherwise.
+            """
+
+            # Check if the result for this subproblem is already computed
             if (i, j) not in memo:
+                # Base case: If pattern is exhausted, check if text is also exhausted
                 if j == len(pattern):
                     ans = i == len(text)
                 else:
+                    # Check if the first character of the remaining text and pattern matches
                     first_match = i < len(text) and pattern[j] in {text[i], '.'}
+
+                    # If the next character in pattern is '*', two cases are possible:
+                    # 1. '*' acts as zero occurrences of the preceding element.
+                    # 2. '*' acts as one or more occurrences of the preceding element.
                     if j+1 < len(pattern) and pattern[j+1] == '*':
                         ans = dp(i, j+2) or first_match and dp(i+1, j)
                     else:
+                        # If the next character in pattern is not '*', proceed with the next characters in both strings
                         ans = first_match and dp(i+1, j+1)
 
+                # Memoize the result for this subproblem
                 memo[i, j] = ans
             return memo[i, j]
 
+        # Start the recursion with the entire text and pattern
         return dp(0, 0)
+
 
 '''
 
