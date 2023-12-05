@@ -129,5 +129,6 @@ class Solution(object):
 
 
 '''
-
+This code defines a Solution class with a method isMatch to determine if a given text string matches a pattern string, where pattern may contain special characters like '.' and '*'. 
+It uses dynamic programming, specifically top-down approach with memoization, to efficiently solve the problem by breaking it down into smaller subproblems.
 '''
