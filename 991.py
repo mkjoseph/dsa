@@ -21,3 +21,5 @@ class Solution:
             else: target //= 2
 
         return ans + startValue - target
+
+        
