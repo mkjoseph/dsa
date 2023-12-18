@@ -56,3 +56,45 @@ class Solution(object):
         return slot==0
     
 # Pass 3
+
+'''
+public boolean isValidSerialization(String preorder) {
+    String[] nodes = preorder.split(",");
+    int diff = 1;
+    for (String node: nodes) {
+        if (--diff < 0) return false;
+        if (!node.equals("#")) diff += 2;
+    }
+    return diff == 0;
+}
+'''
+
+def is_valid_serialization(preorder: str) -> bool:
+    """
+    Check if the given preorder serialization of a binary tree is valid.
+
+    A valid serialization is one where each non-null node provides exactly two child nodes
+    and each null node (represented by '#') does not provide any child nodes.
+
+    Args:
+    preorder (str): A string representing the preorder serialization of a binary tree,
+                    where nodes are separated by commas.
+
+    Returns:
+    bool: True if the serialization is valid, False otherwise.
+    """
+    nodes = preorder.split(",")
+    diff = 1  # Initial diff for the root node.
+
+    for node in nodes:
+        diff -= 1  # Decrease for visiting a node.
+        if diff < 0:
+            return False
+        if node != "#":
+            diff += 2  # Increase for two children if the node is not null.
+
+    return diff == 0
+
+# Example usage
+preorder = "9,3,4,#,#,1,#,#,2,#,6,#,#"
+print(is_valid_serialization(preorder))  # Output: True or False based on the input
