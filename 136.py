@@ -16,3 +16,11 @@ print(singleNumber(nums))  # Output: 1
 
 
 # Pass 2 
+
+def singleNumber(self, nums: List[int]) -> int:
+	return reduce(lambda total, el: total ^ el, nums)
+
+# Pass 3
+
+def singleNumber(self, nums: List[int]) -> int:
+    return (x := 0, [x := x ^ v for v in nums])[-1][-1]
