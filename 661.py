@@ -1,4 +1,13 @@
 def imageSmoother(img):
+    """
+    Smooths the given image by calculating the average value of each pixel and its surrounding pixels.
+
+    Args:
+        img (List[List[int]]): The input image represented as a 2D list of integers.
+
+    Returns:
+        List[List[int]]: The smoothed image represented as a 2D list of integers.
+    """
     m, n = len(img), len(img[0])
     result = [[0] * n for _ in range(m)]
     
