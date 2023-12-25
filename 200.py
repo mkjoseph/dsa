@@ -1,6 +1,17 @@
 # Pass 1 
 
 def numIslands(grid):
+    """
+    Counts the number of islands in a given grid.
+
+    Args:
+        grid (List[List[str]]): A 2D grid represented as a list of lists of characters.
+            '1' represents land, '0' represents water.
+
+    Returns:
+        int: The number of islands in the grid.
+    """
+
     if not grid:
         return 0
 
