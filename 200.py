@@ -30,6 +30,16 @@ def numIslands(grid):
 
 
 def numIslands(self, grid):
+    """
+    Counts the number of islands in a given grid.
+
+    Args:
+        grid (List[List[str]]): A 2D grid of '1's (land) and '0's (water).
+
+    Returns:
+        int: The number of islands in the grid.
+
+    """
     def sink(i, j):
         if 0 <= i < len(grid) and 0 <= j < len(grid[i]) and grid[i][j] == '1':
             grid[i][j] = '0'
