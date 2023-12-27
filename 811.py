@@ -17,12 +17,21 @@ def subdomainVisits(cpdomains):
 
 # pass 2 
 
-    def subdomainVisits(self, cpdomains):
-        count = collections.Counter()
-        for cd in cpdomains:
-            n, s = cd.split()
-            count[s] += int(n)
-            for i in range(len(s)):
-                if s[i] == '.':
-                    count[s[i + 1:]] += int(n)
-        return ["%d %s" % (count[k], k) for k in count]
+def subdomainVisits(self, cpdomains):
+    """
+    Counts the number of visits for each subdomain in the given list of domain strings.
+
+    Args:
+        cpdomains (list): A list of strings representing the count and domain pairs.
+
+    Returns:
+        list: A list of strings representing the count and subdomain pairs.
+    """
+    count = collections.Counter()
+    for cd in cpdomains:
+        n, s = cd.split()
+        count[s] += int(n)
+        for i in range(len(s)):
+            if s[i] == '.':
+                count[s[i + 1:]] += int(n)
+    return ["%d %s" % (count[k], k) for k in count]
