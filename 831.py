@@ -1,5 +1,14 @@
 import re
 def mask_personal_info(s):
+    """
+    Masks personal information such as email addresses and phone numbers in a given string.
+
+    Args:
+        s (str): The string containing personal information.
+
+    Returns:
+        str: The masked personal information or "Invalid personal information" if the input is not a valid email address or phone number.
+    """
     if re.match(r'^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$', s):
         # Mask email address
         name, domain = s.split('@')
