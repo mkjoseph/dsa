@@ -120,7 +120,7 @@ This implementation provides a simple yet effective user interface for our app. 
 
 The final step is to integrate all these components into an Xcode project, test the app on a simulator, and make any necessary adjustments for a polished experience. 
 
-Would you like to proceed with additional features or any specific customizations for this app? 📱✨
+Would you like to proceed with additional features or any specific customizations for this app 📱✨
 
 ---
 
