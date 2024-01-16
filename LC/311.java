@@ -54,5 +54,28 @@ public int[][] multiply(int[][] A, int[][] B) {
     return result;   
 }
 
+/*
+ * Optimization: Utilizes a list to store non-zero elements and their indices from matrix A, which can reduce the number of multiplications.
+Readability: This approach is slightly more complex than the first pass due to additional data structure manipulation. 
+Inline comments explaining the logic would enhance readability.
+Potential Issue: Using raw type for List[] indexA is not a best practice in Java. 
+Prefer using generics for type safety, e.g., List<List<Integer>>.
+Maintainability: This approach is less intuitive and might be harder to maintain or modify by other developers without adequate documentation.
+ */
 
-// Annotated
+// Summation
+
+/*
+ * Pass 1:
+
+Pros: Simplicity and efficiency in cases of sparse matrices.
+Cons: Could be improved with comments for clarity.
+Pass 2:
+
+Pros: Potentially more efficient for very sparse matrices.
+Cons: Complexity, lack of generics, and reduced maintainability.
+Overall, Pass 1 is preferable for its simplicity and readability, 
+especially if the efficiency gain in Pass 2 is marginal for the expected input matrices. 
+However, for extremely sparse matrices, Pass 2 could offer performance benefits. 
+In both cases, adding comments would greatly aid in understanding the code.
+ */
