@@ -16,7 +16,11 @@ public class Solution {
         return C;   
     }
 }
-
+/*
+Efficiency: Optimized by checking if A[i][k] != 0 and B[k][j] != 0 before multiplication, which avoids unnecessary calculations.
+Clarity: Straightforward nested loop structure makes the code easily understandable.
+Potential Improvement: Lack of comments might make it harder for others to quickly grasp the logic, especially for complex matrix operations.
+ */
 
 // Pass 2 
 public int[][] multiply(int[][] A, int[][] B) {
