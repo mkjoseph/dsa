@@ -79,3 +79,19 @@ especially if the efficiency gain in Pass 2 is marginal for the expected input m
 However, for extremely sparse matrices, Pass 2 could offer performance benefits. 
 In both cases, adding comments would greatly aid in understanding the code.
  */
+
+// brute
+
+public int[][] multiply_bruteForce(int[][] A, int[][] B) {
+	int m = A.length, n = A[0].length;
+	int nB = B[0].length;
+	int [][] C = new int[m][nB];
+	for (int i = 0; i<m; i++) {
+		for (int j = 0; j<nB; j++){
+			C[i][j] = 0;
+			for( int k = 0; k<n; k++)
+				C[i][j] += A[i][k]*B[k][j];
+		}
+	}
+	return C;
+}
