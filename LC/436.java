@@ -81,3 +81,93 @@ class Solution {
         return res;
     }
 }
+
+// 3. Sorting + Binary Search
+public class Solution {
+
+    // Method to perform binary search on the intervals
+    public int[] binary_search(int[][] intervals, int target, int start, int end) {
+        // Base condition for recursion - if start index is greater than or equal to end index
+        if (start >= end) {
+            // Check if the current interval's start is greater than or equal to target
+            if (intervals[start][0] >= target) {
+                return intervals[start];
+            }
+            // Return null if no suitable interval is found
+            return null;
+        }
+
+        // Calculate the middle index
+        int mid = (start + end) / 2;
+
+        // If the middle interval's start is less than the target, search in the right half
+        if (intervals[mid][0] < target) {
+            return binary_search(intervals, target, mid + 1, end);
+        } else {
+            // Else, search in the left half
+            return binary_search(intervals, target, start, mid);
+        }
+    }
+
+    // Method to find the right interval for each interval in the list
+    public int[] findRightInterval(int[][] intervals) {
+        // Result array to store indices of the right intervals
+        int[] res = new int[intervals.length];
+
+        // HashMap to store each interval and its original index
+        HashMap<int[], Integer> hash = new HashMap<>();
+
+        // Populating the HashMap with intervals and their original indices
+        for (int i = 0; i < intervals.length; i++) {
+            hash.put(intervals[i], i);
+        }
+
+        // Sorting the intervals based on their starting points
+        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+
+        // Loop through each interval
+        for (int i = 0; i < intervals.length; i++) {
+            // Perform binary search to find the right interval for the current interval
+            int[] interval = binary_search(intervals, intervals[i][1], 0, intervals.length - 1);
+
+            // Store the result using the original index, -1 if no interval is found
+            res[hash.get(intervals[i])] = interval == null ? -1 : hash.get(interval);
+        }
+
+        // Return the result array
+        return res;
+    }
+}
+
+// 4. TreeMap
+public class Solution {
+
+    // Method to find the right interval for each interval in the list
+    public int[] findRightInterval(int[][] intervals) {
+        // A TreeMap to store the starting points of intervals and their indices
+        TreeMap<Integer, Integer> starts = new TreeMap<>();
+
+        // Result array to store indices of the right intervals
+        int[] res = new int[intervals.length];
+
+        // Loop to populate the TreeMap with the starting points and their indices
+        for (int i = 0; i < intervals.length; i++) {
+            starts.put(intervals[i][0], i);
+        }
+
+        // Loop through each interval
+        for (int i = 0; i < intervals.length; i++) {
+            // Find the least starting point greater than or equal to the end point of the current interval
+            Map.Entry<Integer, Integer> pos = starts.ceilingEntry(intervals[i][1]);
+
+            // Store the index of the right interval in the result array, -1 if no such interval exists
+            res[i] = pos == null ? -1 : pos.getValue();
+        }
+
+        // Return the result array
+        return res;
+    }
+}
+
+
+// 5. Two Arrays w/o Binary Search
