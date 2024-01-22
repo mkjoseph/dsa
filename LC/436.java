@@ -171,3 +171,57 @@ public class Solution {
 
 
 // 5. Two Arrays w/o Binary Search
+public class Solution {
+
+    // Method to find the right interval for each interval in the list
+    public int[] findRightInterval(int[][] intervals) {
+        // Creating a copy of intervals to separately sort by end times
+        int[][] endIntervals = Arrays.copyOf(intervals, intervals.length);
+
+        // HashMap to store each interval and its original index
+        HashMap<int[], Integer> hash = new HashMap<>();
+
+        // Loop to populate the HashMap with intervals and their original indices
+        for (int i = 0; i < intervals.length; i++) {
+            hash.put(intervals[i], i);
+        }
+
+        // Sorting the intervals based on their starting points
+        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+
+        // Sorting the copied intervals based on their ending points
+        Arrays.sort(endIntervals, (a, b) -> a[1] - b[1]);
+
+        // 'j' is a pointer used for iterating through the intervals
+        int j = 0;
+
+        // Array to store indices of the right intervals
+        int[] res = new int[intervals.length];
+
+        // Loop through each interval sorted by end time
+        for (int i = 0; i < endIntervals.length; i++) {
+            // Increment 'j' until finding an interval that starts after the current interval ends
+            while (j < intervals.length && intervals[j][0] < endIntervals[i][1]) {
+                j++;
+            }
+
+            // Store the index of the right interval in the result array
+            // If 'j' reaches the end, store -1 indicating no right interval was found
+            res[hash.get(endIntervals[i])] = j == intervals.length ? -1 : hash.get(intervals[j]);
+        }
+
+        // Return the result array
+        return res;
+    }
+}
+
+
+/*
+ * Copying Arrays: endIntervals is created as a copy of intervals to sort intervals based on their end times.
+HashMap: A HashMap (hash) stores each interval and its original index. This helps in retrieving the original index after sorting.
+Sorting: The original intervals array is sorted by start times, and endIntervals is sorted by end times.
+Iterating with Two Pointers: The variable j is used to iterate through the sorted intervals, and i iterates through endIntervals.
+Finding Right Interval: The while loop increments j to find the first interval in intervals that starts after the end of the current interval in endIntervals.
+Storing Results: The index of the right interval is stored in res. If no such interval is found (when j reaches the length of intervals), -1 is stored.
+Returning the Array: The method returns the res array, which contains the indices of the right intervals for each interval in endIntervals, according to their original order in intervals.
+ */
