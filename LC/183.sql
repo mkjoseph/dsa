@@ -5,6 +5,7 @@ SELECT customerId FROM Orders
 )
 
 
+
 /*
 This query:
 Uses a subquery to get all customerIds that have ordered from the Orders table.
