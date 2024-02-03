@@ -10,7 +10,5 @@ def largeGroupPositions(S):
 
   print(res)
   return res
-
-
-# Call the function with a string that contains large groups
+ 
 largeGroupPositions("abbxxxxzzy")
