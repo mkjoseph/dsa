@@ -7,7 +7,7 @@ def largeGroupPositions(S):
     if j - i >= 3:
       res.append([i, j - 1])
     i = j
-
+  # print result for error check
   print(res)
   return res
  
