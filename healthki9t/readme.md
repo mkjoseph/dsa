@@ -79,4 +79,15 @@ To tackle this project, we'll break down the solution into several key component
 1. **Start with a Prototype**: Begin by setting up a basic project structure and integrating Firebase and HealthKit. Focus on getting a simple flow working from authentication to data capture.
 2. **Iterate and Expand**: Add features progressively, testing extensively at each stage.
 3. **Review and Optimize**: Pay attention to performance, especially with data fetching and storage operations.
+
+
+HealthKit is a powerful framework developed by Apple that provides a central repository for health and fitness data on iPhone and Apple Watch. With the user's permission, apps can access and share this data, facilitating a collaborative and comprehensive health and fitness experience. HealthKit helps in centralizing health data from third-party apps, the iPhone, Apple Watch, and external health devices, managing authorization, privacy around health data, and reading and writing data to the shared Health Store. It's designed to ensure that all apps understand the data in the same way by constraining data types and units to a predefined list.
+
+For more detailed information about HealthKit, including its capabilities, how to get started, and how to integrate it into your apps, you can refer to the following resources:
+
+- **About the HealthKit Framework** on Apple Developer Documentation provides an overview of what HealthKit is and its importance for developers in creating health and fitness apps: [About the HealthKit framework](https://developer.apple.com/documentation/healthkit/about_the_healthkit_framework).
+
+- **HealthKit** on Apple Developer Documentation offers in-depth details on how to use HealthKit, including accessing and sharing health and fitness data: [HealthKit](https://developer.apple.com/documentation/healthkit).
+
+- **Getting Started with HealthKit - WWDC20** video by Apple Developer provides insights into building health and fitness apps using HealthKit, managing data privacy, and leveraging HealthKit's built-in features: [Getting started with HealthKit - WWDC20](https://developer.apple.com/videos/play/wwdc2020/10640/).
  
