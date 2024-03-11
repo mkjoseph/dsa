@@ -15,21 +15,21 @@ Develop the chatbot API
     Create an API wrapper around the trained chatbot model
     Define API endpoints for sending inputs to the chatbot and receiving its responses
     Implement authentication, rate limiting, logging and other necessary API features
-   Deploy and host the API
-Package the API codebase and dependencies
-Provision the necessary infrastructure (servers, databases, etc.)
-Deploy the API to a hosting environment that can serve requests at scale
-Integrate the chatbot API into your application
-Build the front-end components for your chatbot (UI, webhooks, etc.)
-Connect your application to the hosted chatbot API
-Handle API responses and update the application state and UI accordingly
-   Test and validate
-Perform thorough testing of the end-to-end chatbot experience
-Validate that it is performing as expected and providing a good user experience
-Identify and fix any bugs or issues that arise
-   Launch and maintain
-Release your chatbot-enabled application to end users
-Monitor performance and collect feedback
-Provide ongoing maintenance, updates, and improvements to the chatbot model and API
-
+Deploy and host the API
+    Package the API codebase and dependencies
+    Provision the necessary infrastructure (servers, databases, etc.)
+    Deploy the API to a hosting environment that can serve requests at scale
+    Integrate the chatbot API into your application
+    Build the front-end components for your chatbot (UI, webhooks, etc.)
+    Connect your application to the hosted chatbot API
+    Handle API responses and update the application state and UI accordingly
+Test and validate
+    Perform thorough testing of the end-to-end chatbot experience
+    Validate that it is performing as expected and providing a good user experience
+    Identify and fix any bugs or issues that arise
+Launch and maintain
+    Release your chatbot-enabled application to end users
+    Monitor performance and collect feedback
+    Provide ongoing maintenance, updates, and improvements to the chatbot model and API
+    
 '''
