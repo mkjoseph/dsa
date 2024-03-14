@@ -1,79 +1,35 @@
-# Define a class for the OffGridTinyHouseCalculator to encapsulate the calculator logic
-class OffGridTinyHouseCalculator:
+import pandas as pd
 
-  def __init__(self):
-    # Initialize default costs; these could be adjusted based on more accurate or current data
-    self.tiny_house_cost_per_sqft = 150  # Example cost per square foot
-    self.land_cost = 0  # Default, assuming no land purchase initially
-    self.solar_panel_cost = 10000  # Example flat cost for a basic solar setup
-    self.water_system_cost = 5000  # Example cost for water system setup
-    self.septic_system_cost = 8000  # Example cost for septic system
-    self.additional_features_cost = 0  # Placeholder for additional costs
+def load_csv(file_path):
+    return pd.read_csv(file_path)
 
-  def calculate_total_cost(self, sqft, include_land, land_cost, include_solar,
-                           include_water, include_septic,
-                           additional_features_cost):
-    # Calculate the base cost for the tiny house
-    tiny_house_base_cost = self.tiny_house_cost_per_sqft * sqft
+def calculate_average_annual_growth_rate(data):
+    # Calculate the average annual growth rate for each ZIP code
+    growth_rates = []
+    for index, row in data.iterrows():
+        # Example: Calculate growth rate based on the first and last available monthly data
+        # This is a simplification; you might want to calculate monthly growth rates and average them
+        start_price = row.dropna().iloc[-13]  # Assuming the last 12 months + 1 for the first non-NaN value. 
+        end_price = row.dropna().iloc[-1]
+        years = 1  # Simplification for example purposes; calculate based on actual dates for precision
+        growth_rate = ((end_price / start_price) ** (1 / years)) - 1
+        growth_rates.append((row['RegionName'], growth_rate))
 
-    # Adjust costs based on user selections
-    if not include_land:
-      self.land_cost = 0
-    else:
-      self.land_cost = land_cost
+    return pd.DataFrame(growth_rates, columns=['ZIP Code', 'Average Annual Growth Rate'])
 
-    if not include_solar:
-      self.solar_panel_cost = 0
+def find_top_zip_codes_for_investment(data, top_n=10):
+    # Sort the data by growth rate and select the top N ZIP codes
+    top_zip_codes = data.sort_values(by='Average Annual Growth Rate', ascending=False).head(top_n)
+    return top_zip_codes
 
-    if not include_water:
-      self.water_system_cost = 0
+# Load the data
+file_path = Zip_zori_uc_sfrcondomfr_sm_month (1).csv  # Update this to your actual file path
+data = load_csv(file_path)
 
-    if not include_septic:
-      self.septic_system_cost = 0
+# Calculate the average annual growth rates
+growth_data = calculate_average_annual_growth_rate(data)
 
-    self.additional_features_cost = additional_features_cost
+# Find the top ZIP codes for investment
+top_zip_codes = find_top_zip_codes_for_investment(growth_data)
 
-    # Calculate total cost
-    total_cost = (tiny_house_base_cost + self.land_cost +
-                  self.solar_panel_cost + self.water_system_cost +
-                  self.septic_system_cost + self.additional_features_cost)
-    return total_cost
-
-  def display_cost_breakdown(self, sqft, include_land, include_solar,
-                             include_water, include_septic,
-                             additional_features_cost):
-    # Calculate total cost and get the breakdown
-    total_cost = self.calculate_total_cost(sqft, include_land, self.land_cost,
-                                           include_solar, include_water,
-                                           include_septic,
-                                           additional_features_cost)
-
-    # Display the breakdown
-    print(f"Cost Breakdown for Your Off-Grid Tiny House:")
-    print(
-        f"Tiny House Base Cost (for {sqft} sqft): ${self.tiny_house_cost_per_sqft * sqft}"
-    )
-    if include_land:
-      print(f"Land Cost: ${self.land_cost}")
-    if include_solar:
-      print(f"Solar Panel System Cost: ${self.solar_panel_cost}")
-    if include_water:
-      print(f"Water System Cost: ${self.water_system_cost}")
-    if include_septic:
-      print(f"Septic System Cost: ${self.septic_system_cost}")
-    print(f"Additional Features Cost: ${self.additional_features_cost}")
-    print(f"Total Cost: ${total_cost}")
-
-
-calculator = OffGridTinyHouseCalculator()
-calculator.display_cost_breakdown(sqft=300,
-                                  include_land=True,
-                                  include_solar=True,
-                                  include_water=True,
-                                  include_septic=True,
-                                  additional_features_cost=2000)
-
-# Note: Function calls and method calls are commented out to comply with the instructions for development within the PCI.
-# The following lines would be used to create an instance of the calculator and test it with example inputs:
-# calculator = OffGridTinyHouseCalculator()
-# calculator.display_cost_breakdown(sqft=300, include_land=True, include_solar=True, include_water=True, include_septic=True, additional_features_cost=2000)
+print(top_zip_codes)
