@@ -1,35 +1,42 @@
-import pandas as pd
+from collections import deque
 
-def load_csv(file_path):
-    return pd.read_csv(file_path)
+class Solution:
+    def maxSlidingWindow(self, nums: list[int], k: int) -> list[int]:
+        """
+        Finds the maximum element in each sliding window of size k in the given array.
 
-def calculate_average_annual_growth_rate(data):
-    # Calculate the average annual growth rate for each ZIP code
-    growth_rates = []
-    for index, row in data.iterrows():
-        # Example: Calculate growth rate based on the first and last available monthly data
-        # This is a simplification; you might want to calculate monthly growth rates and average them
-        start_price = row.dropna().iloc[-13]  # Assuming the last 12 months + 1 for the first non-NaN value. 
-        end_price = row.dropna().iloc[-1]
-        years = 1  # Simplification for example purposes; calculate based on actual dates for precision
-        growth_rate = ((end_price / start_price) ** (1 / years)) - 1
-        growth_rates.append((row['RegionName'], growth_rate))
+        Args:
+            nums: The input array of integers.
+            k: The size of the sliding window.
 
-    return pd.DataFrame(growth_rates, columns=['ZIP Code', 'Average Annual Growth Rate'])
+        Returns:
+            A list of integers representing the maximum element in each sliding window.
+        """
+        n = len(nums)
+        result = []
+        window = deque()
 
-def find_top_zip_codes_for_investment(data, top_n=10):
-    # Sort the data by growth rate and select the top N ZIP codes
-    top_zip_codes = data.sort_values(by='Average Annual Growth Rate', ascending=False).head(top_n)
-    return top_zip_codes
+        # Process the first k elements of the array
+        for i in range(k):
+            while window and nums[i] >= nums[window[-1]]:
+                window.pop()
+            window.append(i)
 
-# Load the data
-file_path = Zip_zori_uc_sfrcondomfr_sm_month (1).csv  # Update this to your actual file path
-data = load_csv(file_path)
+        # Process the remaining elements of the array
+        for i in range(k, n):
+            result.append(nums[window[0]])
 
-# Calculate the average annual growth rates
-growth_data = calculate_average_annual_growth_rate(data)
+            # Remove the leftmost element if it's outside the current window
+            if window and window[0] <= i - k:
+                window.popleft()
 
-# Find the top ZIP codes for investment
-top_zip_codes = find_top_zip_codes_for_investment(growth_data)
+            # Remove the elements smaller than the current element from the right
+            while window and nums[i] >= nums[window[-1]]:
+                window.pop()
 
-print(top_zip_codes)
+            window.append(i)
+
+        # Append the maximum element of the last window
+        result.append(nums[window[0]])
+
+        return result
